@@ -1,8 +1,12 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
-
 import "./App.css";
 
-function App() {
+import { Home } from "./components/Home";
+import { About } from "./components/About";
+import { Contact } from "./components/Contact";
+import { Projects } from "./components/Projects";
+
+export const App = () => {
   return (
     <>
       <main className="bg-slate-300/20">
@@ -18,6 +22,4 @@ function App() {
       </main>
     </>
   );
-}
-
-export default App;
+};
