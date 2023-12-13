@@ -1,10 +1,10 @@
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
 
-import { Home } from "./components/Home";
-import { About } from "./components/About";
-import { Contact } from "./components/Contact";
-import { Projects } from "./components/Projects";
+import { Home } from "./pages/Home";
+import { About } from "./pages/About";
+import { Contact } from "./pages/Contact";
+import { Projects } from "./pages/Projects";
 import { Navbar } from "./components/Navbar";
 
 export const App = () => {
