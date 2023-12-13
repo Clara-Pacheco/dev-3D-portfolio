@@ -1,5 +1,6 @@
 import { Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
+import { Loader } from "../components/Loader";
 
 export const Home = () => {
   return (
@@ -11,7 +12,9 @@ export const Home = () => {
       <Canvas
         className="w-full h-screen bg-transparent"
         camera={{ near: 0.1, far: 1000 }}
-      ></Canvas>
+      >
+        <Suspense fallback={<Loader />}></Suspense>
+      </Canvas>
     </section>
   );
 };
