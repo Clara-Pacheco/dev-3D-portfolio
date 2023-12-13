@@ -5,13 +5,14 @@ import { Home } from "./components/Home";
 import { About } from "./components/About";
 import { Contact } from "./components/Contact";
 import { Projects } from "./components/Projects";
+import { Navbar } from "./components/Navbar";
 
 export const App = () => {
   return (
     <>
       <main className="bg-slate-300/20">
         <Router>
-          Navbar
+          <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
