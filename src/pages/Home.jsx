@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { Loader } from "../components/Loader";
 import Island from "../models/Island";
@@ -7,6 +7,8 @@ import Bird from "../models/Bird";
 import Plane from "../models/Plane";
 
 export const Home = () => {
+  const [isRotating, setIsRotating] = useState(false);
+
   const adjustIslandForScreenSize = () => {
     let screenScale = null;
     let screenPosition = [0, -6.5, -43];
@@ -21,6 +23,22 @@ export const Home = () => {
     return [screenScale, screenPosition, rotation];
   };
 
+  const adjustPlaneForScreenSize = () => {
+    let planeScale, planePosition;
+
+    if (window.innerWidth < 768) {
+      planeScale = [1.5, 1.5, 1.5];
+      planePosition = [0, -1.5, 0];
+    } else {
+      planeScale = [3, 3, 3];
+      planePosition = [0, -4, -4];
+    }
+
+    return [planeScale, planePosition];
+  };
+
+  const [planeScale, planePosition] = adjustPlaneForScreenSize();
+
   const [islandScale, islandPosition, islandRotation] =
     adjustIslandForScreenSize();
   return (
@@ -30,7 +48,9 @@ export const Home = () => {
       </div> */}
 
       <Canvas
-        className="w-full h-screen bg-transparent"
+        className={`w-full h-screen bg-transparent ${
+          isRotating ? "cursor-grabbing" : "cursor-grab"
+        }`}
         camera={{ near: 0.1, far: 1000 }}
       >
         <Suspense fallback={<Loader />}>
@@ -48,8 +68,15 @@ export const Home = () => {
             position={islandPosition}
             scale={islandScale}
             rotation={islandRotation}
+            isRotating={isRotating}
+            setIsRotating={setIsRotating}
           />
-          <Plane />
+          <Plane
+            isRotating={isRotating}
+            planeScale={planeScale}
+            planePosition={planePosition}
+            rotation={[0, 20, 0]}
+          />
         </Suspense>
       </Canvas>
     </section>
