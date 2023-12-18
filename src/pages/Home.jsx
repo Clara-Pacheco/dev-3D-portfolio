@@ -4,10 +4,11 @@ import { Loader } from "../components/Loader";
 import Island from "../models/Island";
 import Sky from "../models/Sky";
 import Bird from "../models/Bird";
-import Plane from "../models/Plane";
+import { Plane } from "../models/Plane";
 
 export const Home = () => {
   const [isRotating, setIsRotating] = useState(false);
+  const [currentStage, setCurrentStage] = useState(1);
 
   const adjustIslandForScreenSize = () => {
     let screenScale = null;
@@ -71,9 +72,10 @@ export const Home = () => {
             rotation={islandRotation}
             isRotating={isRotating}
             setIsRotating={setIsRotating}
+            setCurrentStage={setCurrentStage}
           />
           <Plane
-            isRotating={isRotating}
+            isRotating={true}
             planeScale={planeScale}
             planePosition={planePosition}
             rotation={[0, 20, 0]}
