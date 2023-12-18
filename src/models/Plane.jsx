@@ -14,6 +14,7 @@ export function Plane({ isRotating, ...props }) {
   // Use an effect to control the plane's animation based on 'isRotating'
   // Note: Animation names can be found on the Sketchfab website where the 3D model is hosted.
   useEffect(() => {
+    console.log({ isRotating });
     if (isRotating) {
       actions["Take 001"].play();
     } else {
