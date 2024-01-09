@@ -6,15 +6,17 @@ import { About } from "./pages/About";
 import { Contact } from "./pages/Contact";
 import { Projects } from "./pages/Projects";
 import { Navbar } from "./components/Navbar";
+import { Construcao } from "./pages/Construcao";
 
 export const App = () => {
   return (
     <>
       <main className="bg-slate-300/20">
         <Router>
-          <Navbar />
+          {/* <Navbar /> */}
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<Construcao />} />
+            <Route path="/home" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/contact" element={<Contact />} />
